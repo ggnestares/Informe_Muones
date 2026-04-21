@@ -26,7 +26,7 @@
 *.vrb
 
 # Generated files (usually not tracked)
-*.pdf
+# *.pdf
 *.ps
 *.dvi
 *.xdv
