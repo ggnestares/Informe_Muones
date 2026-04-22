@@ -64,7 +64,7 @@
 \begin{center}
 \vspace{5cm}
 
-\Large{\bf Dependencia Angular de la Difracción de Raman-Nath}\\
+\Large{\bf Detección y Análisis Energético de Muones}\\
 %\Large{} es más grande que \large{}
 
 \vspace{3cm}
@@ -73,21 +73,19 @@
 
 
 \vspace{0.5cm}
-\normalsize{La difracción de Raman-Nath es un fenómeno acústico-óptico que ocurre cuando la luz atraviesa un
-medio fluido excitado por ondas acústicas. En este trabajo se busca montar un experimento que
-permita estudiar la dependencia angular del fenómeno y evaluar la validez del modelo teórico propuesto por Raman y Nath. 
-Se concluye que este último no predice correctamente los resultados experimentales hallados para altas frecuencias del 
-ultrasonido y rangos angulares de decenas de grados. Se proponen modificaciones al arreglo experimental montado para futuros 
-esfuerzos por caracterizar esta dependencia.
+\normalsize{
+
 } 
 
 
 \vspace{5cm}
 
 \large{\textbf{García Nestares, Gerónimo - Russo, Santiago}}\\ %% Autores %%
-\normalsize{\textit{malena.arismendi@ib.edu.ar -  santiago.russo@ib.edu.ar}}\\
+\normalsize{\textit{geronimo.garcia@ib.edu.ar -  santiago.russo@ib.edu.ar}}\\
 
-\normalsize{Informe Raman-Nath / Física Experimental II -- Instituto Balseiro,\\ Universidad Nacional de Cuyo \& Comisión Nacional de Energía Atómica, \\ Av. Bustillo 9500, c.p. 8400 San Carlos de Bariloche, Prov. de Río Negro, Argentina.}
+\normalsize{Informe Detección de Muones / Física Experimental II -- Instituto Balseiro,\\ Universidad Nacional 
+            de Cuyo \& Comisión Nacional de Energía Atómica, \\ Av. Bustillo 9500, c.p. 8400 San Carlos de Bariloche, Prov. de 
+            Río Negro, Argentina.}
 
 
 \end{center}
@@ -99,221 +97,46 @@ esfuerzos por caracterizar esta dependencia.
 % Editando el encabezado y pie de pagina
 \pagestyle{fancy}
 \lhead{\scriptsize{Informe Raman-Nath}}
-\rhead{\scriptsize{Arismendi, M.- Russo, S.}}
+\rhead{\scriptsize{Garcia Nestares, G.- Russo, S.}}
 \chead{\scriptsize{\includegraphics[height=10pt]{v/arg.pdf}}}
 \lfoot{\scriptsize{Experimental II}}
-\cfoot{\scriptsize{Marzo - 2026}}
+\cfoot{\scriptsize{Abril - 2026}}
 \rfoot{\scriptsize{Página \thepage}}
 \renewcommand{\footrulewidth}{0.6pt}
 
 \section{Introducción}
 
-Cuando una onda acústica traviesa un medio fluido produce gradientes de presión que conllevan gradientes en la densidad del medio. 
-Estos gradientes de densidad producen a su vez, entre otros efectos, gradientes de índice de refracción en medios traslúcidos. 
-Cuando la onda acústica tiene una longitud de onda lo suficientemente corta, este gradiente de índice de refracción se comporta
-como una rejilla de difracción al interactuar con luz visible. Esto hace que cuando un haz de luz monocromática atraviesa un medio traslúcido
-produzca en el campo lejano un patrón de difracción como si se tratase de una rejilla \cite{Born}. Un esquema simplificado de la forma en que se
-produce la difracción se exhibe en la Figura \ref{fig:Difraccion}. 
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/Difraccion.png}
-    \caption{Esquema de cómo se produce el patrón de difracción Raman-Nath. Adaptada de Saleh y Teich\cite{Photonics}.}
-    \label{fig:Difraccion}
-\end{figure}
-
-
-Este fenómeno fue descrito matemáticamente  por primera vez por Raman y Nath\cite{RamanNathP2} por lo que lleva su nombre. Dentro de toda la descripción que realizaron del fenómeno algo que destacan es la dependencia
-de la intensidad de los distintos órdenes respecto del ángulo de incidencia $\phi$ que forma la luz con la pared del recipiente. 
-En su desarrollo, desprecian el efecto de la refracción interna de los rayos de luz a causa de a variación
-de índice de refracción predicha por el teorema de Fermat, suponiendo que el camino de la luz dentro del fluido es corto. Suponiendo también que
-la dependencia angular debe ser simétrica respecto de $\phi=0$, predicen que la intensidad del n-ésimo orden de difracción viene dada por
-el cuadrado de una función de Bessel de primera especie de orden n, como indica la proporción \ref{eq:raman_nath}:
+El muón es una de las partículas del modelo estándar, posee la carga del electrón pero su masa en reposo es unas 200 veces mayor.  
+Uno de los lugares comunes donde se puede encontrarlos es en la atmósfera terrestre, pues se producen cuando un rayo cósmico impacta contra
+átomos de nitrógeno u oxígeno en la atmósfera superior de la tierra. Esta creación de muones es un proceso aleatorio de Poisson. 
+\\
+Este tipo de eventos son independientes entre sí y ocurren a una tasa constante $\lambda$ al estudiar su ocurrencia en función de una variable continua como el tiempo.
+Estos procesos siguen una distribución llamada de Poisson que indica que al dividir el tiempo en intervalos $dt$ 
+la probabilidad de ocurrencia de n eventos en uno de estos intervalos viene dada por la Ecuación \ref{eq:Poisson}.
 
 \begin{equation}
-    I_n \propto J_n^2 \left[ v_0 \sec \phi \frac{\sin (\pi L \tan \phi / \lambda^*)}{\pi L \tan \phi / \lambda^*} \right]
-    \label{eq:raman_nath}
+    \label{eq:Poisson}
+    P(n) = e^{-\lambda dt} \frac{(\lambda dt)^n}{n!}
 \end{equation}
 
-Donde $v_0$ es una constante que depende de características del sistema como la longitud L y la longitud de onda de la luz difractada.
+A partir de esta distribución de probabilidad se puede caracterizar la probabilidad de que durante un cierto tiempo $\Delta t$ 
+no ocurran eventos. Para ello se considera la ocurrencia de ningún evento ($n = 0$) durante un intervalo $\Delta t$. Esta probabilidad queda
+determinada por la Ecuación \ref{eq:DistDelta_t}:
 
-Existe un ángulo $\phi_0 = arctan(\frac{v}{f.L})$ para el cual los caminos ópticos son idénticos y el patrón de interferencia desaparece, quedando
-únicamente visible el orden central. Donde v es la velocidad del sonido en el agua considerada de 1482 m/s, $f$ es la frecuencia de la onda acústica
-y L la longitud que recorre la luz en el medio.  
-
-Experimentalmente Debye y Sears\cite{Debye} encontraron que a medida que continúa aumentando el ángulo, los órdenes reaparecen, 
-llegan a una intensidad  máxima menor a la original, luego desaparecen nuevamente, llegan a una intensidad máxima aún menor 
-y vuelven a desaparecer. Este comportamiento cíclico amortiguado es congruente con la forma del cuadrado de una función de Bessel. 
-Es experimentado por cada orden de difracción por separado a excepción del central y se da en intervalos angulares pequeños, 
-lo que dificulta su observación y medición.
-
-El objetivo de este trabajo es montar un experimento que permita observar la dependencia angular de este fenómeno de difracción, 
-medir las intensidades de los órdenes de difracción y corroborar la validez del modelo teórico propuesto por Raman y Nath cuantitativamente.
- 
-
-\section{Montaje y método experimental}
-En primer lugar, se dispone una línea óptica formada por un láser rojo, dos rieles con un telescopio en cada uno, una cuba metálica 
-(ubicada transversalmente), una pantalla y una cámara de fotos. Un esquema del arreglo se muestra en la Figura \ref{fig:Esquema}. 
-
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{Figuras/EsquemaExp.pdf}
-    \caption{Montaje experimental utilizado: línea óptica compuesta de láser, primer telescopio, la cuba con agua destilada, segundo telescopio, la pantalla y la cámara}
-    \label{fig:Esquema}
-\end{figure}
-
-
-El láser de helio-neón tiene una longitud de onda $\lambda= 630 \text{ nm}   $. Se ubica a $(59,7\pm0,1)\text{ cm}$ del primer lente con $f_1= (2,5\pm0,1)\text{ cm}$ 
-que, a su vez, dista del segundo lente con $f_2= (20\pm0,1)\text{ cm}$ a $(21,3\pm0,1)\text{ cm}$. El primer telescopio, 
-formado por estos dos, logra aumentar el diámetro del haz en un factor $A_1=f_2/f_1=8$. A la salida de este telescopio y recibiendo
- el haz aumentado por una ventana de vidrio de $(1,8\pm0,1)\text{ cm}$ de alto, se ubica la cuba de ancho $a=(6\pm0,1)\text{ cm}$ llena de 
- agua destilada sobre un goniómetro con plataforma, 
- con el fin de variar el ángulo que forma con el haz incidente. Alineado perpendicularmente a esta última, se encuentra el segundo telescopio 
- formado por una tercera lente de $f_3= (20\pm0,1)\text{ cm}$ a una distancia aproximada de $(23\pm0,5)\text{ cm}$ (se ajustó 
- buscando la máxima definición puntual de la salida) a la cuarta lente con $f_4= (1,9\pm0,1)\text{ cm}$. Esta última se enfoca 
- en una pantalla blanca sobre la cual se toman fotos con una cámara Canon EOS Rebel T7 montada sobre un elevador hidráulico. \\
-
-La cuba cuenta con dos pastilllas de piezoeléctrico en sus extremos. Los piezoeléctricos se conectan a equipos electrónicos mediante 
-cables coaxiales y fichas BNC cuyos contactos se unen a los piezoeléctricos mediante soldadura sobre un depósito de plata. 
-Uno de ellos recibe una señal sinusoidal amplificada 50x por un amplificador Falco Systems DS-5MHz High Voltage Amplifier WMA-300. Debido a ello el 
-piezoeléctrico se excita con la frecuencia de la onda y la transforma en una onda de presión que 
-viaja por el agua hacia el otro extremo de la cuba. Allí, excita al otro piezoeléctrico que transmite esta señal de llegada a un 
-osciloscopio Rigol DS2022A.  Se regula la amplitud de la señal de entrada $V_{pp}$ y su frecuencia $f$ mediante un generador de señales 
-Rigol DG4102 comandado por computadora.
-\\
-
-Inicialmente se estudia la dependencia de la intensidad de los órdenes de difracción con la amplitud de la señal de ultrasonido. 
-Las mediciones consisten en variar la amplitud de la señal de entrada, entre 1 y 11 Vpp con paso de 0,5 V, y para cada una fotografiar 
-el patrón de difracción resultante en la pantalla. Con ello se espera hallar la amplitud que presenta la máxima intensidad en los 
-órdenes de difracción más altos. \\
-
-Luego, fijada la tensión donde mejor se aprecian los órdenes superiores, se lleva adelante el estudio de la dependencia angular. 
-La variación del ángulo de incidencia va de 0\textdegree a 33\textdegree respecto a la normal, con paso de 0,5\textdegree. 
-Esto se realiza rotando la cuba con un goniómetro como plataforma. 
-\\
-Con un programa de python, se suma la intensidad de cada columna de píxeles verticalmente y se grafica esta suma en función de la posición horizontal. 
-Estableciendo un umbral de intensidad adecuado a cada foto se establecieron los mínimos, que ayudaron a determinar los extremos 
-de los intervalos que definen espacialmente a cada órden. Se integra la intensidad en dirección horizontal sobre 
-cada órden de difracción para así llegar a su intensidad total, el área debajo de cada pico en el gráfico intensidad vs posición. 
-Para asignar una incerteza a las mediciones de intensidad, se considera el error aleatorio 
-de la intensidad de fondo de la cámara. A partir de todas las imágenes obtenidas se obtiene un desvío de la intensidad total 
-de las columnas de pixeles en la región oscura de todas las fotos y luego para cada órden se suma en cuadratura el error de cada columna de 
-píxeles que lo compone teniendo en cuenta el ancho de integración horizontal de cada uno de ellos. 
-
-\section{Resultados y discusión}
-
-
-Se analiza la evolución de la intensidad de cada orden de difracción, tanto para la variación de voltaje como con la variación del angulo de incidencia. 
-El error en la intensidad de los órdenes resulta dos órdenes de magnitud por debajo de las mediciones 
-de intensidad obtenidas y por esta razón no es apreciable en los gráficos presentados.
-
-En el caso de la variación de voltaje, se grafican las intensidades de cada órden de difracción en función del voltaje en la Figura \ref{fig:voltaje}.
-
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/voltajes.png}
-    \caption{Intensidades de cada orden de difracción en función del voltaje de excitación del piezoeléctrico previo a la etapa de amplificación.}
-    \label{fig:voltaje}
-\end{figure}
-
-Se puede notar la tendencia descendente del maximo principal (orden $n=0$) a medida que se aumenta el voltaje. 
-De manera opuesta, los órdenes superiores presentan un comportamiento menos monótono, curvo y principalmente creciente. 
-Esto concuerda con la premisa de que la intensidad se redistribuye entre los órdenes: a medida que la intensidad del máximo principal decrece, 
-la de los órdenes superiores aumenta. Los órdenes $n=\pm1$ y $n=\pm2$ lo hacen a una tasa de cambio mayor que la de los órdenes $n=\pm3$ y $n=\pm4$ en 
-el rango de $1V-8V$. Luego los primeros parecen llegar a un valor máximo a partir del cual comienzan a decrecer y los órdenes superiores 
-aumentan su razón de crecimiento. Lo que indica que se transfiere la intensidad de los órdenes más bajos a los más altos a medida que se 
-aumenta el voltaje de excitación que produce el ultrasonido. De manera demostrativa, se exponen en la Figura \ref{fig:ordenes} tres de las gráficas de Intensidad por pixel para 1V, 5V y 11V.
-
-\begin{figure}[htbp]
-\centering
-
-\begin{subfigure}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{Figuras/_MG_4249_centrado_maximo.png}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{Figuras/_MG_4257_centrado_maximo.png}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{Figuras/_MG_4269_centrado_maximo.png}
-\end{subfigure}
-
-\caption{Espectro de difracción con su intensidad para señales de excitación de 1 V, 5 V y 11 V.}
-\label{fig:ordenes}
-
-\end{figure}
+\begin{equation}
+    \label{eq:DistDelta_t}
+    P(n = 0 , \Delta t) = e^{-\lambda \Delta t}
+\end{equation}
 
 
 
-En cuanto a la dependencia angular del fenómeno de difracción, se realizaron mediciones de intensidad de cada órden de difracción 
-al variar el ángulo de incidencia del láser rotando la cuba. Las intensidades de los órdenes de difracción en función del ángulo 
-se exhiben en la Figura \ref{fig:Angulos}.
-
-\begin{figure} [htpb]
-    \centering
-    \includegraphics[width=0.7\linewidth]{Figuras/Angulos.png}
-    \caption{Intensidad de los órdenes de difracción como función del ángulo de incidencia $\phi$.}
-    \label{fig:Angulos}
-\end{figure}
 
 
-Se observa en cada uno de los órdenes de difracción un comportamiento similar al previamente descrito por Debye y Sears. Si bien en su trabajo no se especifica 
-el rango angular utilizado, 
-la descripción fenomenológica de sus resultados coincide con lo observado en el presente estudio para la integridad del barrido angular realizado.
-Se tiene la intensidad máxima de los órdenes superiores para la incidencia perpendicular. 
-A medida que aumenta el ángulo $\phi$ se observa como cada órden disminuye su intensidad siguiendo una forma de oscilación amortiguada. 
-Alcanza mínimos, vuelve a aumentar hacia máximos por debajo del anterior y luego continúa el descenso. 
-Al intentar ajustar una función que obedezca la proporción establecida en \eqref{eq:raman_nath} a los datos, se obtiene un resultado insatisfactorio 
-que no guarda correlación observable con lo obtenido experimentalmente. Uno de estos intentos de ajuste se muestra en la Figura \ref{fig:ajusten2}.
-La razón de esto puede explicarse en la aplicabilidad del modelo de Raman-Nath al experimento montado y llevado a cabo. 
-Así como también en la manifestación de otros fenómenos ópticos que podrían superponerse con los efectos de la difracción Raman-Nath. 
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/Ajusten2.png}
-    \caption{Intento de ajustar la expresión \eqref{eq:raman_nath} a la intensidad medida de los órdenes de difracción n = 2 
-    como función del ángulo de incidencia $\phi$. Se ve como la predicción teórica no concuerda con los datos medidos.}
-    \label{fig:ajusten2}
-\end{figure}
+\section{Materiales y Métodos Experimentales}
+E
 
 
-En primer lugar, está la aplicabilidad del modelo de Raman-Nath para la incidencia oblicua a este experimento. 
-En su trabajo Mayer\cite{Mayer} encuentra que para pequeñas desviaciones angulares, de $\pm 1$\textdegree, el modelo presenta 
-marcadas discrepancias con los datos medidos si se emplean frecuencias de ultrasonido de 3 MHz. En el presente trabajo la frecuencia
-de excitación del medio es de 0,97 MHz lo cual se encuentra en el órden de magnitud de la de Mayer. 
-Esto en buena medida explica por qué no se ve la desaparición de ningún orden de difracción en el 
-ángulo $\phi_0  \approx 1,4$\textdegree predicho por la teoría para los parámetros experimentales de frecuencia y longitud de la cuba de este estudio. 
-Además, Mayer concluye que el modelo propuesto es solo aplicable para bajas intensidades acústicas. Considerando que la señal de 
-excitación de 11 Vpp se ve amplificada 50 veces, la señal que excita el piezoeléctrico es de 550 Vpp. Lo cual suponemos produce 
-una elevada intensidad acústica en el agua que saca del régimen de validez del modelo al experimento. 
 
-En segundo lugar, tanto Mayer como Nomoto\cite{Nomoto} destacan que para frecuencias mayores toman importancia otros
-fenómenos ópticos como la reflexión de Bragg. De acuerdo a Nomoto, la difracción de Raman-Nath en estos sistemas 
-se da en el límite de baja frecuencia, mientras que en el límite de altas frecuencias el efecto predominante predicho 
-por las ecuaciones del fenómeno es la reflexión de Bragg.
-
-Por último, una suposición clave de Raman y Nath para derivar el modelo que resulta en funciones de Bessel es que para considerar las trayectorias
-rectilíneas previamente descritas dentro de la cuba se ignora el principio de Fermat, y esto puede hacerse sin mucho error si la longitud de la cuba "no es excesiva".
-Sin embargo, al trabajar sobre variaciones angulares mucho mayores a 1°, ocurre que los rayos de luz atraviesen varios frentes 
-de onda sonora y se encuentren por una extensa longitud en la región con gradientes de índice de refracción lo que hace que su trayectoria no sea rectilínea dentro de la cuba.
-Debido a ello, el modelo con funciones de Bessel no es aplicable a este experimento.
-
-\section{Conclusiones}
-Se concluye que dados las magnitudes y rangos elegidos para los parámetros que caracterizan al experimento,
-la dependencia angular observada no se puede caracterizar con el modelo propuesto por Raman-Nath.
-Además, se observa una gran correlación con la descripción cualitativa del fenómeno estudiado provista Debye y Sears.
-
-Sería apropiado continuar esta línea de estudio realizando modificaciones pertinentes al arreglo experimental en vistas de poder apreciar y
-estudiar la dependencia del fenómeno para ángulos pequeños. Para ello, consideramos necesaria la implementación de un motor paso a paso de alta resolución angular
-y un correspondiente sistema mecánico que permitan automatizar la variación angular con una elevada sensibildad. Por otro lado, trabajaríamos con señales 
-de excitación de menor amplitud. Si bien no se apreciarían el tercer y cuarto orden de difracción se tendría un sistema más cercano al régimen de validez
-del modelo propuesto por Mayer. Bajo estas premisas correspondería tratar de determinar regímenes de frecuencia para los cuales el modelo podría aplicarse o no.
 
 
 
