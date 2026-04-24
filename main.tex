@@ -66,7 +66,7 @@
 \begin{center}
 \vspace{5cm}
 
-\Large{\bf Detección y Análisis Energético de Muones}\\
+\Large{\bf Detección de Muones}\\
 %\Large{} es más grande que \large{}
 
 \vspace{3cm}
@@ -221,9 +221,25 @@ junto con el tiempo transcurrido desde la última adquisición de un evento. Est
 labratorio que actúa como servidor. A estos datos se accede remotamente por una conexión ssh con el servidor para su posterior procesamiento y análisis. 
 
 \section{Resultados y Discusión}
+Se montó el experimento tal como se propuso, se programó la placa y se configuró la red para almacenar y acceder remotamente a los datos.
+Durante distintas sesiones de medición que totalizaron unas 16 horas, se detectaron aproximadamente 6 millones de eventos. Los datos de los mismos fueron 
+extraídos exitosamente de la computadora servidor y analizados en forma remota. Con distintas amplitudes, todos ellos lucen similares al mostrado
+en la Figura \ref{fig:PicoProm}.
 
-
-
+Sin embargo a la hora de querer realizar la distribución de los intervalos de tiempo entre evento y evento se encontró un resultado instisfactorio.
+El tiempo más corto entre el almacenado en archivo de dos eventos sucesivos resultó ser de unos 5 ms. Si se estudia la Ecuación \ref{eq:Distribución_final},
+es fácil notar que en este rango de $\Delta t$ el término correspondiente al decaimiento del muón se vuelve prácticamente nulo, por lo que de
+estos datos sería imposible extraer información con la cual encontrar el tiempo de vida media del muón. Por otro lado, se sabe que para detectores
+como este el tiempo medio de ingreso de muones es de aproximadamente 2,5 ms. [3 Asorey] Por lo tanto, podemos inferir que se perdieron las señales
+de todos los decaimientos de muones así como del ingreso de muchos de ellos. La razón de por qué esto ocurrió así es que el programa de 
+lectura, disparo y almacenamiento del buffer que se realizó con python es demasiado lento. Debido a la implementación de rutinas propias de la 
+API de python de la placa $RedPitaya$ en el código. Se realizó una prueba de rendimiento a estas rutinas y se halló que algunas de ellas llegaban
+a tardar en ejecutarse tiempos del orden del milisegundo, mucho mayores a los tiempos característicos del fenómeno en estudio. A su vez, la medición
+de tiempo se realiza a través de una librería de python que corre en el microprocesador de la placa, el cual está desacoplado de la FPGA. 
+Por lo que aún optimizando el código de python tampoco habría sido posible obtener tiempos realistas de la detección para estudiar el proceso apropiadamente.
+Para poder adquirir los datos adecuadamente habría sido necesario poder programar la FPGA para que el la señal del ADC pueda ser guardada directamente
+en memoria junto a un registro del reloj interno de la FPGA. Esta programación debería realizarse a bajo nivel, técnica que escapa los alcances y 
+objetivos del experimento.
 
 
 %Hasta acá puede escribir el viejo ---------------------------------- A partir de acá escribe Gero
