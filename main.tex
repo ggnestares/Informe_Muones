@@ -104,7 +104,7 @@
 \rfoot{\scriptsize{Página \thepage}}
 \renewcommand{\footrulewidth}{0.6pt}
 
-\section{Introducción}
+\section{Introducción.}
 
 El muón es una de las partículas del modelo estándar, posee la carga del electrón pero su masa en reposo es unas 200 veces mayor.  
 Uno de los lugares comunes donde se puede encontrarlos es en la atmósfera terrestre, pues se producen cuando un rayo cósmico impacta contra
@@ -156,21 +156,17 @@ Cuando el electrón del decaimiento es emitido, también sale a velocidades rela
 puede sensarse. Así, es posible ver el decaimiento de muones dentro del detector.
 
 Entonces, las señales medidas en un detector de muones en agua por efecto Cherenkov pueden provenir de dos fuentes, del ingreso de un muón o del decaimiento de uno.
-La diferencia de tiempo entre picos sucesivos sigue entonces una distribución que combina estos dos procesos de Poisson, ingreso y decaimiento. Como
-los procesos son independientes entre sí, pues no todos los muones que llegan al tanque decaen allí, las probabilidades de detectar 
-un ingreso y un decaimiento se suman. Cada una es una distribución como la mostrada en la Ecuación 2 y sus medias son una frecuencia característica
-de ingreso $1/\tau_{in}$ y una frecuencia característica de decaimiento $1/\tau_{\mu}$. La distribución de los $\Delta t$ viene dada
-por la Ecuación \ref{eq:Distribución_final}.
+por este motivo, la distribución de los $\Delta t$ resulta de combinar ambos procesos y viene dada
+por la Ecuación \ref{eq:Distribución_final},
 
 \begin{equation}
     \label{eq:Distribución_final}
-    P(\Delta t) = e^{\frac{\Delta t}{\tau_{in}}} + e^{\frac{\Delta t}{\tau_{\mu}}}
+    P(\Delta t) = e^{{\Delta t}/{\tau_{in}}} + e^{{\Delta t}/{\tau_{\mu}}}\ ,
 \end{equation}
 
-De esta distribución, se puede obtener un tiempo característico que se da entre la llegada de dos muones al tanque $\tau_{in}$ , y el tiempo característico
-de decaimiento, es decir, el tiempo de vida media del muón $\tau_{mu}$.
+donde $\tau_{in}$ es el tiempo característico que se da entre la llegada de dos muones al tanque, y $\tau_{mu}$ el tiempo de vida media del muón.
 
-\section{Materiales y Métodos Experimentales}
+\section{Materiales y Métodos Experimentales.}
 En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. El mismo consiste estructuralmente en un tanque de agua,
 del cual se muestra un esquema en la Figura \ref{fig:Detector}. Para detectar la luz emitida por los muones se utiliza un tubo fotomultiplicador,
 montado en la tapa del tanque. Las paredes interiores se revisten con material reflectivo con el fin de que la luz producida en cualquier parte 
@@ -209,6 +205,9 @@ En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un rel
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
 LAGO cada 8 ns. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y almacena en su memoria las 8 
 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello podría reconstruirse cada pulso completo.  
+
+\section{Resultados y Discusión.}
+Tomando los datos medidos 
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
