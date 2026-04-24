@@ -104,7 +104,7 @@
 \rfoot{\scriptsize{Página \thepage}}
 \renewcommand{\footrulewidth}{0.6pt}
 
-\section{Introducción.}
+\section{Introducción}
 
 El muón es una de las partículas del modelo estándar, posee la carga del electrón pero su masa en reposo es unas 200 veces mayor.  
 Uno de los lugares comunes donde se puede encontrarlos es en la atmósfera terrestre, pues se producen cuando un rayo cósmico impacta contra
@@ -161,23 +161,32 @@ por la Ecuación \ref{eq:Distribución_final},
 
 \begin{equation}
     \label{eq:Distribución_final}
-    P(\Delta t) = e^{{\Delta t}/{\tau_{in}}} + e^{{\Delta t}/{\tau_{\mu}}}\ ,
+    P(\Delta t) = e^{\frac{\Delta t}{\tau_{in}}} + e^{\frac{\Delta t}{\tau_{\mu}}}
 \end{equation}
 
 donde $\tau_{in}$ es el tiempo característico que se da entre la llegada de dos muones al tanque, y $\tau_{\mu}$ el tiempo de vida media del muón.
 
-\section{Materiales y Métodos Experimentales.}
-En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. El mismo consiste estructuralmente en un tanque de agua,
+\section{Materiales y Métodos Experimentales}
+En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. Su funcionamiento se basa en que al ingresar al tanque los
+muones viajan por encima de la velocidad de la luz en agua, por lo que emiten una onda de choque de fotones. El proceso se detiene una vez que
+la velocidad del muón, tras frenarse por su interacción con el agua, es menor a la de la luz en agua. Debido a ello, la cantidad de fotones 
+producidos es proporcional a la energía original de la partícula. Detectando estos fotones emitidos, se tiene la certeza del ingreso de un muón
+y una noción de su energía.  
+
+El detector consiste estructuralmente en un tanque de agua,
 del cual se muestra un esquema en la Figura \ref{fig:Detector}. Para detectar la luz emitida por los muones se utiliza un tubo fotomultiplicador,
-montado en la tapa del tanque. Las paredes interiores se revisten con material reflectivo con el fin de que la luz producida en cualquier parte 
-del tanque se refleje y pueda llegar al tubo, este material viene en forma de bolsa y se sujeta al fondo del tanque. En la Figura 1 también se esquematiza
+montado en la tapa del tanque. Las paredes interiores se revisten con material reflectivo llamado $liner$ con el fin de que la luz producida en cualquier parte 
+del tanque se refleje y pueda llegar al tubo. El $liner$ viene en forma de bolsa y se sujeta al fondo del tanque. En la Figura 1 también se esquematiza
 la incidencia de un muón, su decaimiento y la radiación que emite en ambos procesos.
 
 
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.6\linewidth]{Figuras/TachoFinal.pdf}
-    \caption{Esquema del detector de muones utilizado y los fenómenos estudiados. }
+    \caption{Esquema del detector de muones utilizado y los fenómenos estudiados. El mismo consisten en un tanque de agua (1) cuyo interior se
+            reviste con el $liner$ (2), se lo sujeta al fondo (3) y se llena de agua. De su tapa cuelga el tubo fotomultiplicador (4) 
+            el cual es controlado por la placa LAGO (5). Se esquematizan el ingreso de un muón (6), la radiación que emite por efecto Cherenkov (7)
+            su decaimiento (8), el electrón que libera (9) y la radiación que este emite por Cherenkov (10).}
     \label{fig:Detector}
 \end{figure}
 
@@ -195,7 +204,7 @@ típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/TachoFinal.pdf}
+    \includegraphics[width=0.6\linewidth]{Figuras/pulsoTipico.pdf}
     \caption{Gráfica de una señal típica vista en el ADC debido a incidencias y decaimientos de muones. Este gráfico corresponde a una
             señal extraida aleatoriamente durante el experimento.}
     \label{fig:PricoProm}
@@ -205,9 +214,6 @@ En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un rel
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
 LAGO cada 8 ns. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y almacena en su memoria las 8 
 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello podría reconstruirse cada pulso completo.  
-
-\section{Resultados y Discusión.}
-Tomando los datos medidos 
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
