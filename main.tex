@@ -212,12 +212,16 @@ típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
     \label{fig:PicoProm}
 \end{figure}
 
-En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un reloj interno de 125 MHz para realizar la adquisición de datos 
+En este experimento se busca utilizar como FPGA una placa $RedPitaya$ con un reloj interno de 125 MHz para realizar la adquisición de datos 
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
-LAGO cada 8 ns y lo hace con una resolución de 14 bits. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y 
-almacena en su memoria las 8 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello puede reconstruirse cada pulso completo.
+LAGO cada 8 ns y lo hace con una resolución de 14 bits. Todas estas mediciones las envía a un buffer. La supervisión del buffer es llevada a cabo
+por un programa de python que se ejecuta en el microprocesador de la placa. Cuando el flanco de tensión supera el 
+umbral configurado extrae del buffer las 8 mediciones anteriores y las 24 posteriores a la detección del flanco y las almacena en un archivo de texto
+junto con el tiempo transcurrido desde la última adquisición de un evento.
 
 \section{Resultados y Discusión}
+
+
 
 
 \bibliographystyle{unsrt}
