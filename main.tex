@@ -169,7 +169,7 @@ donde $\tau_{in}$ es el tiempo característico que se da entre la llegada de dos
 \section{Materiales y Métodos Experimentales}
 En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. Su funcionamiento se basa en que al ingresar al tanque los
 muones viajan por encima de la velocidad de la luz en agua, por lo que emiten una onda de choque de fotones. El proceso se detiene una vez que
-la velocidad del muón, tras frenarse por su interacción con el agua, es menor a la de la luz en agua. Debido a ello, la cantidad de fotones 
+la velocidad del muón, tras frenarse por su interacción con el agua, es menor a la de la luz en este medio. Debido a ello, la cantidad de fotones 
 producidos es proporcional a la energía original de la partícula. Detectando estos fotones emitidos, se tiene la certeza del ingreso de un muón
 y una noción de su energía.  
 
@@ -195,25 +195,25 @@ la salida del tubo a distintas amplificaciones. Esta placa es energizada por un 
 componentes con tensiones fijas y una tensión variable con la que se polariza el tubo fotomultiplicador, todas ellas obtenidas a partir de una fuente de computadora.
 La tensión de polarización del tubo es variable pues de ella depende el nivel de tensión de todas las señales que salen del tubo.
 La señal de la máxima etapa de amplificación del tubo es transmitida por cable coaxial a una placa FPGA (Field Programmable Gate Array). 
-Allí, un conversor analógico digital (ADC) de 10 bits realiza una reconstrucción discreta de la señal para que luego pueda ser procesada 
-por computadora. En la misma placa, con un programa de python se detectan picos de voltaje en estas señales digitalizadas 
+Allí, un conversor analógico digital (ADC) realiza una reconstrucción discreta de la señal para que luego pueda ser procesada 
+por computadora. En la misma placa, se detectan picos de voltaje en estas señales digitalizadas 
 que indiquen la incidencia de un muón o un decaimiento, una vez detectadas se almacena la reconstrucción que el ADC hace de la señal. 
-Si una señal debe guardarse o no se discrimina considerando un valor umbral de voltaje a superar. La morfología de de la señal en el ADC 
+Si una señal debe guardarse o no se discrimina considerando un valor umbral de voltaje a superar. La morfología de la señal en el ADC 
 típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/pulsoTipico.pdf}
-    \caption{Gráfica de una señal típica vista en el ADC debido a incidencias y decaimientos de muones. Este gráfico corresponde a una
+    \includegraphics[width=0.9\linewidth]{Figuras/pulsoTipico.pdf}
+    \caption{Gráfica de una señal típica vista en el ADC debido a incidencias o decaimientos de muones. Este gráfico corresponde a una
             señal extraida aleatoriamente durante el experimento.}
-    \label{fig:PricoProm}
+    \label{fig:PicoProm}
 \end{figure}
 
 En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un reloj interno de 125 MHz para realizar la adquisición de datos 
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
-LAGO cada 8 ns. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y almacena en su memoria las 8 
-lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello podría reconstruirse cada pulso completo.  
+LAGO cada 8 ns y lo hace con una resolución de 14 bits. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y 
+almacena en su memoria las 8 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello puede reconstruirse cada pulso completo.  
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
