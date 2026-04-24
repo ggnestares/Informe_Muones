@@ -217,7 +217,8 @@ de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el A
 LAGO cada 8 ns y lo hace con una resolución de 14 bits. Todas estas mediciones las envía a un buffer. La supervisión del buffer es llevada a cabo
 por un programa de python que se ejecuta en el microprocesador de la placa. Cuando el flanco de tensión supera el 
 umbral configurado extrae del buffer las 8 mediciones anteriores y las 24 posteriores a la detección del flanco y las almacena en un archivo de texto
-junto con el tiempo transcurrido desde la última adquisición de un evento.
+junto con el tiempo transcurrido desde la última adquisición de un evento. Estos archivos de texto son enviados por red a una computadora en el
+labratorio que actúa como servidor. A estos datos se accede remotamente por una conexión ssh con el servidor para su posterior procesamiento y análisis. 
 
 \section{Resultados y Discusión}
 
