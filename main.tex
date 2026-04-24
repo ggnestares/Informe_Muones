@@ -197,7 +197,7 @@ La tensión de polarización del tubo es variable pues de ella depende el nivel 
 La señal de la máxima etapa de amplificación del tubo es transmitida por cable coaxial a una placa FPGA (Field Programmable Gate Array). 
 Allí, un conversor analógico digital (ADC) realiza una reconstrucción discreta de la señal para que luego pueda ser procesada 
 por computadora. En la misma placa, se detectan picos de voltaje en estas señales digitalizadas 
-que indiquen la incidencia de un muón o un decaimiento, una vez detectadas se almacena la reconstrucción que el ADC hace de la señal. 
+que indican la incidencia de un muón o un decaimiento. Una vez detectadas se almacena la reconstrucción que el ADC hace de la señal. 
 Si una señal debe guardarse o no se discrimina considerando un valor umbral de voltaje a superar. La morfología de la señal en el ADC 
 típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
@@ -213,7 +213,10 @@ típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un reloj interno de 125 MHz para realizar la adquisición de datos 
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
 LAGO cada 8 ns y lo hace con una resolución de 14 bits. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y 
-almacena en su memoria las 8 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello puede reconstruirse cada pulso completo.  
+almacena en su memoria las 8 lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello puede reconstruirse cada pulso completo.
+
+\section{Resultados y Discusión}
+
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
