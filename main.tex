@@ -174,7 +174,8 @@ de decaimiento, es decir, el tiempo de vida media del muón $\tau_{mu}$.
 En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. El mismo consiste estructuralmente en un tanque de agua,
 del cual se muestra un esquema en la Figura \ref{fig:Detector}. Para detectar la luz emitida por los muones se utiliza un tubo fotomultiplicador,
 montado en la tapa del tanque. Las paredes interiores se revisten con material reflectivo con el fin de que la luz producida en cualquier parte 
-del tanque se refleje y pueda llegar al tubo.  
+del tanque se refleje y pueda llegar al tubo, este material viene en forma de bolsa y se sujeta al fondo del tanque. En la Figura 1 también se esquematiza
+la incidencia de un muón, su decaimiento y la radiación que emite en ambos procesos.
 
 
 \begin{figure} [H]
@@ -184,7 +185,23 @@ del tanque se refleje y pueda llegar al tubo.
     \label{fig:Detector}
 \end{figure}
 
+Por encima del tubo fotomultiplicador se encuentra un circuito de procesamiento de señal diseñado y construido para el proyecto LAGO que acondiciona
+la salida del tubo a distintas amplificaciones. La señal de la máxima etapa de amplificación del tubo es transmitida por cable coaxil a una placa
+FPGA (Field Programmable Gate Array). Allí, un conversor analógico digital (ADC) de 10 bits realiza una reconstrucción discreta de la señal 
+para luego poder ser procesada por computadora. En la misma placa, con un programa de python se detectan picos de voltaje en estas señales digitalizadas 
+que indiquen la incidencia de un muón o un decaimiento. Esto se discrimina considerando un valor umbral de voltaje a superar por la señal.  
+La morfología de de la señal en el ADC típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Figuras/TachoFinal.pdf}
+    \caption{Gráfica de una señal típica vista en el ADC debido a incidencias y decaimientos de muones. Este gráfico corresponde a una
+            señal extraida aleatoriamente durante el experimento}
+    \label{fig:PricoProm}
+\end{figure}
+
+En este experimento la placa FPGA utilizada 
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
