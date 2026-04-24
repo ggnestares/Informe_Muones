@@ -66,7 +66,7 @@
 \begin{center}
 \vspace{5cm}
 
-\Large{\bf Detección de Muones}\\
+\Large{\bf Detección de Muones con un detector del proyecto LAGO y determinación de su vida media.}\\
 %\Large{} es más grande que \large{}
 
 \vspace{3cm}
@@ -206,7 +206,7 @@ típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Figuras/pulsoTipico.pdf}
+    \includegraphics[width=\linewidth]{Figuras/pulsoTipico.pdf}
     \caption{Gráfica de una señal típica vista en el ADC debido a incidencias o decaimientos de muones. Este gráfico corresponde a una
             señal extraida aleatoriamente durante el experimento.}
     \label{fig:PicoProm}
@@ -244,6 +244,57 @@ objetivos del experimento.
 
 %Hasta acá puede escribir el viejo ---------------------------------- A partir de acá escribe Gero
 
+Por todo lo enumerado, se procedió con el análisis de un set de datos provistos por el grupo de Dispositivos y Sensores, 
+que ellos adquirieran en 2014 a través del mismo equipamiento. El dispositivo con el que fueron medidos contaba 
+con una FPGA similar a la nuestra, cuyo ADC resolvía cada valor de tensión con una frecuencia 
+de 40MHz y una resolución de 10 bits. El set completo contiene alrededor de 21 millones de eventos detectados en un lapso de 22 horas. Calculando
+los valores de $\Delta t$ entre dos eventos consecutivos se construyó el histograma de la Figura \ref{fig:Hist}.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=\linewidth]{Figuras/histograma.pdf}
+    \caption{Distribución de valores de $\Delta t$ entre eventos consecutivos.}
+    \label{fig:Hist}
+\end{figure}
+
+Se desea ajustar a la distribución de la Figura \ref{fig:Hist} una función como la de la Ecuación \ref{eq:Distribución_final}.
+Teniendo en cuenta que la tasa de aparición de muones en el tanque tiene un tiempo característico $\tau_\mu$ 3 órdenes de magnitud
+mayor que el tiempo de decaimiento del muón, se puede aproximar la componente de la distribución asociada a la producción
+de muones como constante en el intervalo de tiempos de interés. 
+Sin embargo se puede observar en el histograma de la Figura \ref{fig:Hist} una anomalía centrada en
+$\Delta t \approx \text8{} \mu\text{s}$. 
+
+Una posible explicación atribuible al pico es la presencia de ruido introducido por la fuente de alimentación de la placa
+de acondicionamiento de señal, ya que $\text{7}\mu\text{s}$ es el tiempo característico de una señal de $\sim \text{140 kHz}$, 
+lo cual es consistente con la frecuencia de trabajo de una fuente de $switching$. Para estudiar este tipo de pulsos se procedió con el análisis
+de valores de área y pico, construyendo el histograma 2D de la Figura \ref{fig:Hist2D}.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=\linewidth]{Figuras/areaPico.pdf}
+    \caption{Histograma de pulsos registrados en función del valor de área y el valor de pico del pulso.}
+    \label{fig:Hist2D}
+\end{figure}
+
+Es de esperar que el ruido proveniente de una fuente con tales características tenga valores de área y pico diferenciables
+de los de un pulso genérico producido por un muón. Sin embargo, tras aplicar diversos filtros al set de datos como umbrales al
+cociente $A/P$ o distintos cortes en el plano $A-P$, la distribución aún presentaba tal anomalía.
+Por ello, pareciera que los pulsos que producen con dicho $\Delta t$ característico tienen una traza similar a la de los muones y los decaimientos. 
+Resulta entonces una explicación un tanto más razonable la presencia de \textit{afterpulses} en el tubo fotomultiplicador.
+Éstos se producen por la presencia de las moléculas de Helio que percolan a través del cristal del PMT. Cuando se produce
+la cascada de electrones consecuente a un pulso de radiación Cherenkov, el gas Helio se ioniza, generando un segundo pulso unos instantes después.
+
+Teniendo en cuenta la complejidad de filtrar estos datos, se puede hacer una aproximación más directa
+forzando un término gaussiano al ajuste. Luego, el ajuste final considerando el tratamiento de la anomalía se ilustra en la Figura \ref{fig:ajuste}.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{Figuras/ajusteHistograma.pdf}
+    \caption{Ajuste de la suma de una función exponencial, una curva gaussiana y una constante al histograma de valores de $\Delta t$ entre pulsos consecutivos.}
+    \label{fig:ajuste}
+\end{figure}
+
+Del ajuste de la Figura \ref{fig:ajuste} se obtuvo como parámetro de la exponencial decreciente un valor para el tiempo de vida media del muón de $\tau_\mu = \text{[2,18 $\pm$ 0,02] $\mu$s}$.
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
