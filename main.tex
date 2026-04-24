@@ -19,6 +19,8 @@
 
 \usepackage[numbers, super]{natbib}     %Para citas
 \usepackage[hidelinks]{hyperref} % Crea los hipervínculos. 'hidelinks' evita que salgan recuadros rojos feos
+\usepackage{titlesec}
+\titleformat*{\section}{\normalsize\bfseries} 
 
 
 
@@ -104,7 +106,7 @@
 \rfoot{\scriptsize{Página \thepage}}
 \renewcommand{\footrulewidth}{0.6pt}
 
-\section{Introducción}
+\section*{Introducción}
 
 El muón es una de las partículas del modelo estándar, posee la carga del electrón pero su masa en reposo es unas 200 veces mayor.  
 Uno de los lugares comunes donde se puede encontrarlos es en la atmósfera terrestre, pues se producen cuando un rayo cósmico impacta contra
@@ -166,7 +168,7 @@ por la Ecuación \ref{eq:Distribución_final},
 
 donde $\tau_{in}$ es el tiempo característico que se da entre la llegada de dos muones al tanque, y $\tau_{\mu}$ el tiempo de vida media del muón.
 
-\section{Materiales y Métodos Experimentales}
+\section*{Materiales y Métodos Experimentales}
 En este experimento se cuenta con un detector de muones por efecto Cherenkov en agua. Su funcionamiento se basa en que al ingresar al tanque los
 muones viajan por encima de la velocidad de la luz en agua, por lo que emiten una onda de choque de fotones. El proceso se detiene una vez que
 la velocidad del muón, tras frenarse por su interacción con el agua, es menor a la de la luz en este medio. Debido a ello, la cantidad de fotones 
