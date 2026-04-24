@@ -115,7 +115,7 @@ considerar que su detección tiene las mismas propiedades.
 \\
 Este tipo de eventos son independientes entre sí y ocurren a una tasa constante $\lambda$ en el tiempo.
 Estos procesos siguen una distribución de Poisson. En un intervalo de tiempo $dt$ 
-la probabilidad de ocurrencia de $n$ eventos de este proceso viene dada por la Ecuación \ref{eq:Poisson}. [1 Taylor]
+la probabilidad de ocurrencia de $n$ eventos de este proceso viene dada por la Ecuación \ref{eq:Poisson}. \cite{Taylor} 
 
 \begin{equation}
     \label{eq:Poisson}
@@ -136,7 +136,7 @@ Una vez los muones son creados en las colisiones de rayos cósmicos con la atmó
 Si bien son particulas con un tiempo de vida media muy corto, al viajar a velocidades tan elevadas su tiempo propio se dilata haciendo que vivan
 lo suficiente como para alcanzar la corteza terrestre. Su tiempo de vida, de unos 2,2 $\mu$s se extiende a unos 42 $\mu$s, haciendo que los
 660 m que recorre en su sistema de referencia propio antes de decaer se conviertan en 13 km en el sistema de referencia de un observador terrestre.
-[2 Auger en foco Num 7]
+\cite{Auger}
 
 Durante el recorrido de la partícula hacia la tierra, ésta pierde energía cinética 
 debido al poder de frenado de los medios materiales que atraviesa en su trayectoria.
@@ -230,7 +230,7 @@ Sin embargo a la hora de querer realizar la distribución de los intervalos de t
 El tiempo más corto entre el almacenado en archivo de dos eventos sucesivos resultó ser de unos 5 ms. Si se estudia la Ecuación \ref{eq:Distribución_final},
 es fácil notar que en este rango de $\Delta t$ el término correspondiente al decaimiento del muón se vuelve prácticamente nulo, por lo que de
 estos datos sería imposible extraer información con la cual encontrar el tiempo de vida media del muón. Por otro lado, se sabe que para detectores
-como este el tiempo medio de ingreso de muones es de aproximadamente 2,5 ms. [3 Asorey] Por lo tanto, podemos inferir que se perdieron las señales
+como este el tiempo medio de ingreso de muones es de aproximadamente 2,5 ms. \cite{Asorey} Por lo tanto, podemos inferir que se perdieron las señales
 de todos los decaimientos de muones así como del ingreso de muchos de ellos. La razón de por qué esto ocurrió así es que el programa de 
 lectura, disparo y almacenamiento del buffer que se realizó con python es demasiado lento. Debido a la implementación de rutinas propias de la 
 API de python de la placa $RedPitaya$ en el código. Se realizó una prueba de rendimiento a estas rutinas y se halló que algunas de ellas llegaban
