@@ -108,7 +108,7 @@
 
 El muón es una de las partículas del modelo estándar, posee la carga del electrón pero su masa en reposo es unas 200 veces mayor.  
 Uno de los lugares comunes donde se puede encontrarlos es en la atmósfera terrestre, pues se producen cuando un rayo cósmico impacta contra
-átomos de nitrógeno u oxígeno en la atmósfera superior de la tierra. Esta creación de muones es un proceso aleatorio de Poisson, y se puede 
+átomos de nitrógeno u oxígeno en su capa superior. Esta creación de muones es un proceso aleatorio de Poisson, y se puede 
 considerar que su detección tiene las mismas propiedades. 
 \\
 Este tipo de eventos son independientes entre sí y ocurren a una tasa constante $\lambda$ al estudiar su ocurrencia en función de una variable continua como el tiempo.
@@ -121,7 +121,7 @@ la probabilidad de ocurrencia de $n$ eventos en uno de estos intervalos viene da
 \end{equation}
 
 A partir de esta distribución de probabilidad se puede caracterizar la probabilidad de que durante un cierto tiempo $\Delta t$ 
-no ocurran eventos. Esto daría en defintiva la distribución del tiempo que hay entre dos eventos sucesivos.
+no ocurran eventos. Esto daría en definitiva la distribución del tiempo que hay entre dos eventos sucesivos.
 Para ello se considera la ocurrencia de ningún evento ($n = 0$) durante un intervalo $\Delta t$. Esta probabilidad queda
 determinada por la Ecuación \ref{eq:DistDelta_t}:
 
@@ -138,8 +138,8 @@ lo suficiente como para alcanzar la corteza terrestre. Su tiempo de vida, de uno
 \\
 Para poder detectar los muones que llegan a la corteza terrestre se utilizan diversos tipos de detectores. En este trabajo se utiliza un
 detector basado en el efecto Cherenkov que se produce cuando un muón ingresa en agua. En este caso el efecto Cherenkov aparece porque el 
-muón luego de su creación viaja a una velocidad cercana a la velocidad de la luz en el vacío pero superior a la velocidad de la luz en el agua.
-Cuando la partícula ingresa a un cuerpo de agua, el hecho de que viaje por encima de la velocidad de la luz en ese medio produce una perturbación
+muón luego de su creación viaja a una velocidad superior a la velocidad de la luz en el agua.
+En consecuencia, al ingresar a este produce una perturbación
 en el campo electromagnético que se manifiseta como una onda de choque de fotones. Esta onda puede ser sensada y con ello se puede detectar
 la incidencia de un muón en el cuerpo de agua. A su vez, la energía para realizar esta emisión de luz se obtiene a costa de la energía cinética
 de la partícula. En consecuencia, si el muón tiene una energía cinética dentro de un cierto rango la partícula se frena y su tiempo propio
@@ -201,14 +201,14 @@ típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
     \centering
     \includegraphics[width=0.6\linewidth]{Figuras/TachoFinal.pdf}
     \caption{Gráfica de una señal típica vista en el ADC debido a incidencias y decaimientos de muones. Este gráfico corresponde a una
-            señal extraida aleatoriamente durante el experimento}
+            señal extraida aleatoriamente durante el experimento.}
     \label{fig:PricoProm}
 \end{figure}
 
 En este experimento se busca utilizar como FPGA una placa $Redpitaya$ con un reloj interno de 125 MHz para realizar la adquisición de datos 
 de la detección de muones en el tanque. Al tener dicha frecuencia de reloj el ADC de la placa mide la tensión de la señal que llega de la placa
 LAGO cada 8 ns. Cuando detecta que la tensión está por encima del umbral seleccionado activa un disparo y almacena en su memoria las 8 
-lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello puede reconstruirse cada pulso 
+lecturas anteriores al disparo y las 32 lecturas posteriores. Con ello podría reconstruirse cada pulso completo.  
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
