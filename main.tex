@@ -71,9 +71,13 @@
 
 \vspace{3cm}
 
-\large{Resumen\\}
+{\large{\bf Resumen\\}
 
-
+En este trabajo se explora la elaboración de un sistema de adquisición de datos con FPGA para medir
+el tiempo de vida media del muón mediante el uso de un detector de muones por Cherenkov en agua del proyecto LAGO.
+Empleando datos adquiridos por el grupo de Dispositivos y Sensores en el año 2014 se obtuvo un valor para esta 
+propiedad física fue de $\tau_\mu = \text{(2,18$\pm$0,02)$\mu$s}$.
+}
 \vspace{0.5cm}
 \normalsize{
 
@@ -138,7 +142,7 @@ lo suficiente como para alcanzar la corteza terrestre. Su tiempo de vida, de uno
 660 m que recorre en su sistema de referencia propio antes de decaer se conviertan en 13 km en el sistema de referencia de un observador terrestre.
 \cite{Auger}
 
-Durante el recorrido de la partícula hacia la tierra, ésta pierde energía cinética 
+Durante el recorrido de la partícula hacia la tierra, esta pierde energía cinética 
 debido al poder de frenado de los medios materiales que atraviesa en su trayectoria.
 Cuando un muón ingresa en un medio material con una velocidad mayor a la velocidad de la luz en ese medio
 se produce una onda de choque de fotones. Este fenómeno es conocido como el efecto Cherenkov.
@@ -163,7 +167,7 @@ por la Ecuación \ref{eq:Distribución_final},
 
 \begin{equation}
     \label{eq:Distribución_final}
-    P(\Delta t) = e^{\frac{\Delta t}{\tau_{in}}} + e^{\frac{\Delta t}{\tau_{\mu}}}
+    P(\Delta t) \propto e^{\frac{\Delta t}{\tau_{in}}} + e^{\frac{\Delta t}{\tau_{\mu}}}
 \end{equation}
 
 donde $\tau_{in}$ es el tiempo característico que se da entre la llegada de dos muones al tanque, y $\tau_{\mu}$ el tiempo de vida media del muón.
@@ -182,7 +186,7 @@ del tanque se refleje y pueda llegar al tubo. El $liner$ viene en forma de bolsa
 la incidencia de un muón, su decaimiento y la radiación que emite en ambos procesos.
 
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{Figuras/TachoFinal.pdf}
     \caption{Esquema del detector de muones utilizado y los fenómenos estudiados. El mismo consisten en un tanque de agua (1) cuyo interior se
@@ -196,7 +200,7 @@ Por encima del tubo fotomultiplicador se encuentra un circuito de procesamiento 
 la salida del tubo a distintas amplificaciones. Esta placa es energizada por un circuito de alimentación externo que polariza sus distintos
 componentes con tensiones fijas y una tensión variable con la que se polariza el tubo fotomultiplicador, todas ellas obtenidas a partir de una fuente de computadora.
 La tensión de polarización del tubo es variable pues de ella depende el nivel de tensión de todas las señales que salen del tubo.
-La señal de la máxima etapa de amplificación del tubo es transmitida por cable coaxial a una placa FPGA (Field Programmable Gate Array). 
+La señal de la máxima etapa de amplificación del tubo es transmitida por cable coaxial a una placa FPGA (\textit{Field Programmable Gate Array} o Arreglo de Compuertas Programables). 
 Allí, un conversor analógico digital (ADC) realiza una reconstrucción discreta de la señal para que luego pueda ser procesada 
 por computadora. En la misma placa, se detectan picos de voltaje en estas señales digitalizadas 
 que indican la incidencia de un muón o un decaimiento. Una vez detectadas se almacena la reconstrucción que el ADC hace de la señal. 
@@ -204,7 +208,7 @@ Si una señal debe guardarse o no se discrimina considerando un valor umbral de 
 típica de uno de estos picos se exhibe en la Figura \ref{fig:PicoProm}.
 
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figuras/pulsoTipico.pdf}
     \caption{Gráfica de una señal típica vista en el ADC debido a incidencias o decaimientos de muones. Este gráfico corresponde a una
@@ -220,7 +224,7 @@ umbral configurado extrae del buffer las 8 mediciones anteriores y las 24 poster
 junto con el tiempo transcurrido desde la última adquisición de un evento. Estos archivos de texto son enviados por red a una computadora en el
 labratorio que actúa como servidor. A estos datos se accede remotamente por una conexión ssh con el servidor para su posterior procesamiento y análisis. 
 
-\section{Resultados y Discusión}
+\section*{Resultados y Discusión}
 Se montó el experimento tal como se propuso, se programó la placa y se configuró la red para almacenar y acceder remotamente a los datos.
 Durante distintas sesiones de medición que totalizaron unas 16 horas, se detectaron aproximadamente 6 millones de eventos. Los datos de los mismos fueron 
 extraídos exitosamente de la computadora servidor y analizados en forma remota. Con distintas amplitudes, todos ellos lucen similares al mostrado
@@ -230,27 +234,30 @@ Sin embargo a la hora de querer realizar la distribución de los intervalos de t
 El tiempo más corto entre el almacenado en archivo de dos eventos sucesivos resultó ser de unos 5 ms. Si se estudia la Ecuación \ref{eq:Distribución_final},
 es fácil notar que en este rango de $\Delta t$ el término correspondiente al decaimiento del muón se vuelve prácticamente nulo, por lo que de
 estos datos sería imposible extraer información con la cual encontrar el tiempo de vida media del muón. Por otro lado, se sabe que para detectores
-como este el tiempo medio de ingreso de muones es de aproximadamente 2,5 ms. \cite{Asorey} Por lo tanto, podemos inferir que se perdieron las señales
+como este el tiempo medio de ingreso de muones es de $\tau_{in} \approx \text{2,5 ms}$. \cite{Asorey} Por lo tanto, podemos inferir que se perdieron las señales
 de todos los decaimientos de muones así como del ingreso de muchos de ellos. La razón de por qué esto ocurrió así es que el programa de 
-lectura, disparo y almacenamiento del buffer que se realizó con python es demasiado lento. Debido a la implementación de rutinas propias de la 
-API de python de la placa $RedPitaya$ en el código. Se realizó una prueba de rendimiento a estas rutinas y se halló que algunas de ellas llegaban
+lectura, disparo y almacenamiento del buffer que se realizó con python es demasiado lento. Tal lentitud se debe a la implementación de rutinas propias de la 
+API de python de la placa $RedPitaya$ en el código. 
+
+Se realizó una prueba de rendimiento a estas rutinas y se halló que algunas de ellas llegaban
 a tardar en ejecutarse tiempos del orden del milisegundo, mucho mayores a los tiempos característicos del fenómeno en estudio. A su vez, la medición
 de tiempo se realiza a través de una librería de python que corre en el microprocesador de la placa, el cual está desacoplado de la FPGA. 
-Por lo que aún optimizando el código de python tampoco habría sido posible obtener tiempos realistas de la detección para estudiar el proceso apropiadamente.
-Para poder adquirir los datos adecuadamente habría sido necesario poder programar la FPGA para que el la señal del ADC pueda ser guardada directamente
+Aún optimizando el código de python tampoco habría sido posible obtener tiempos realistas de la detección para estudiar el proceso apropiadamente.
+Para poder adquirir los datos adecuadamente habría sido necesario poder programar la FPGA para que la señal del ADC sea guardada directamente
 en memoria junto a un registro del reloj interno de la FPGA. Esta programación debería realizarse a bajo nivel, técnica que escapa los alcances y 
 objetivos del experimento.
 
 
 %Hasta acá puede escribir el viejo ---------------------------------- A partir de acá escribe Gero
 
-Por todo lo enumerado, se procedió con el análisis de un set de datos provistos por el grupo de Dispositivos y Sensores, 
-que ellos adquirieran en 2014 a través del mismo equipamiento. El dispositivo con el que fueron medidos contaba 
-con una FPGA similar a la nuestra, cuyo ADC resolvía cada valor de tensión con una frecuencia 
+Por todo lo mencionado, se procedió con el análisis de un set de datos provistos por el grupo de Dispositivos y Sensores, 
+que ellos adquirieran en 2014 a través del mismo equipamiento. Esto con la finalidad de caracterizar apropiadamente el fenómeno 
+del decaimiento y cumplir con los objetivos de la práctica al trabajar con grandes conjuntos de datos. El dispositivo con el que 
+fueron medidos contaba con una FPGA similar a la nuestra, cuyo ADC resolvía cada valor de tensión con una frecuencia 
 de 40MHz y una resolución de 10 bits. El set completo contiene alrededor de 21 millones de eventos detectados en un lapso de 22 horas. Calculando
 los valores de $\Delta t$ entre dos eventos consecutivos se construyó el histograma de la Figura \ref{fig:Hist}.
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figuras/histograma.pdf}
     \caption{Distribución de valores de $\Delta t$ entre eventos consecutivos.}
@@ -258,43 +265,68 @@ los valores de $\Delta t$ entre dos eventos consecutivos se construyó el histog
 \end{figure}
 
 Se desea ajustar a la distribución de la Figura \ref{fig:Hist} una función como la de la Ecuación \ref{eq:Distribución_final}.
-Teniendo en cuenta que la tasa de aparición de muones en el tanque tiene un tiempo característico $\tau_\mu$ 3 órdenes de magnitud
+Teniendo en cuenta que la tasa de aparición de muones en el tanque tiene un tiempo característico $\tau_{in}$ 3 órdenes de magnitud
 mayor que el tiempo de decaimiento del muón, se puede aproximar la componente de la distribución asociada a la producción
 de muones como constante en el intervalo de tiempos de interés. 
 Sin embargo se puede observar en el histograma de la Figura \ref{fig:Hist} una anomalía centrada en
-$\Delta t \approx \text8{} \mu\text{s}$. 
+$\Delta t \approx \text{7} \mu\text{s}$. 
 
 Una posible explicación atribuible al pico es la presencia de ruido introducido por la fuente de alimentación de la placa
 de acondicionamiento de señal, ya que $\text{7}\mu\text{s}$ es el tiempo característico de una señal de $\sim \text{140 kHz}$, 
-lo cual es consistente con la frecuencia de trabajo de una fuente de $switching$. Para estudiar este tipo de pulsos se procedió con el análisis
+lo cual es consistente con la frecuencia de trabajo de una fuente de tipo $switching$. Para estudiar este tipo de pulsos se procedió con el análisis
 de valores de área y pico, construyendo el histograma 2D de la Figura \ref{fig:Hist2D}.
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figuras/areaPico.pdf}
     \caption{Histograma de pulsos registrados en función del valor de área y el valor de pico del pulso.}
     \label{fig:Hist2D}
 \end{figure}
-
 Es de esperar que el ruido proveniente de una fuente con tales características tenga valores de área y pico diferenciables
 de los de un pulso genérico producido por un muón. Sin embargo, tras aplicar diversos filtros al set de datos como umbrales al
 cociente $A/P$ o distintos cortes en el plano $A-P$, la distribución aún presentaba tal anomalía.
-Por ello, pareciera que los pulsos que producen con dicho $\Delta t$ característico tienen una traza similar a la de los muones y los decaimientos. 
+Por ello, pareciera que los pulsos que se producen con dicho $\Delta t$ característico tienen una traza similar a la de los muones y los decaimientos. 
 Resulta entonces una explicación un tanto más razonable la presencia de \textit{afterpulses} en el tubo fotomultiplicador.
-Éstos se producen por la presencia de las moléculas de Helio que percolan a través del cristal del PMT. Cuando se produce
+Estos se producen por la presencia de moléculas de Helio que percolan a través del cristal del PMT. Cuando se produce
 la cascada de electrones consecuente a un pulso de radiación Cherenkov, el gas Helio se ioniza, generando un segundo pulso unos instantes después.
 
 Teniendo en cuenta la complejidad de filtrar estos datos, se puede hacer una aproximación más directa
-forzando un término gaussiano al ajuste. Luego, el ajuste final considerando el tratamiento de la anomalía se ilustra en la Figura \ref{fig:ajuste}.
+forzando un término gaussiano al ajuste como se expresa en el modelo de la Ecuación \ref{eq:ajuste}. 
+Luego, el ajuste final considerando el tratamiento de la anomalía se ilustra en la Figura \ref{fig:ajuste}.
+\begin{equation}
+    \label{eq:ajuste}
+    P(\Delta t) = A e^{-\Delta t/\tau_{\mu}} + B e^{\left(-\frac{(\Delta t-\mu)^2}{2\sigma^2}\right)} + C
+\end{equation}
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=0.95\linewidth]{Figuras/ajusteHistograma.pdf}
     \caption{Ajuste de la suma de una función exponencial, una curva gaussiana y una constante al histograma de valores de $\Delta t$ entre pulsos consecutivos.}
     \label{fig:ajuste}
 \end{figure}
 
-Del ajuste de la Figura \ref{fig:ajuste} se obtuvo como parámetro de la exponencial decreciente un valor para el tiempo de vida media del muón de $\tau_\mu = \text{[2,18 $\pm$ 0,02] $\mu$s}$.
+Del ajuste de la Figura \ref{fig:ajuste} se obtuvo como parámetro de la exponencial decreciente 
+un valor para el tiempo de vida media del muón de $\tau_\mu = \text{(2,18 $\pm$ 0,02) $\mu$s}$.
+
+\section*{Conclusiones}
+
+Se logró conectar una placa de adquisición de datos al circuito de acondicionamiento de señal del proyecto LAGO, pudiendo 
+observar satisfactoriamente la traza de la radiación de Cherenkov producida por los muones 
+al atravesar el cuerpo de agua del detector. Sumado a esto, se pudo obtener satisfactoriamente el tiempo
+de vida media del muón a través del análisis estadístico realizado sobre un set de datos adquirido en 2014
+por el grupo de Dispositivos y Sensores. El valor final reportado fue de $\tau_\mu = \text{(2,18 $\pm$ 0,02) $\mu$s}$,
+el cual resulta consistente con el valor predicho por el modelo estándar.
+
+\section*{Agradecimientos}
+
+Agradecemos enormemente la notable contribución al desarrollo de esta práctica por parte de:
+\begin{itemize}
+    \item Lima Estrada, por su colaboración y guía aún luego de haberse apartado de la cátedra de Física Experimental II.
+    \item el grupo de Dispositivos y Sensores, por su ayuda y el habernos permitido usar los datos de 2014. En particular a Mariano Gomez Berisso por su predisposición,
+    por facilitarnos los datos y por haber desarrollado el circuito de alimentación del detector (diseño B$^\text{4}$).
+\end{itemize}
+
+\vspace{2cm}
 
 \bibliographystyle{unsrt}
 \bibliography{referencias}
